@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<h:head>
+PROFİL HAKKIMDA
+</h:head>
+<h:body>
+ <h:form id="frmKullanici">
+			<p:growl autoUpdate="true" life="4000" id="growl" showDetail="true" showSummary="true"></p:growl>
+			
+			<p:dataTable  id="tblKullanici" widgetVar="tblKullanici" var="kullanici" value="#{detailBean.lazy}"
+				selection="#{detailBean.selectedKullanici}" 
+				rows="10" paginator="true" paginatorPosition="bottom" lazy="true" rowKey="#{kullanici.id}" reflow="true"
+				paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="10,20,100">
+				
+				<f:facet name="header">
+				<h4>Kullanıcı Listesi</h4>
+					
+				</f:facet>
+
+				
+				<p:column headerText="Kullanıcı Adı" filterBy="#{kullanici.adi}" sortBy="#{kullanici.adi}">
+					<h:outputText value="#{kullanici.adi}" />
+				</p:column>
+
+				<p:column headerText="Mail" filterBy="#{kullanici.mail}" sortBy="#{kullanici.mail}">
+					<h:outputText value="#{kullanici.mail}" />
+				</p:column>
+
+				<p:column headerText="Şehir seçiniz"  filterBy="#{kullanici.sehir.sehirAdi}" sortBy="#{kullanici.sehir.sehirAdi}" >
+					<h:outputText value="#{kullanici.sehir.sehirAdi}" />
+				</p:column>
+				
+				<p:column headerText="İşlemler" width="90">
+					<p:commandButton icon="ui-icon-pencil" update=":frmKullanici:tblKullanici :frmKullanici:growl"  >
+						<p:confirm header="Profil Görüntüleme" message="Profiline git ?"  />
+					</p:commandButton>
+					
+				</p:column>
+
+				
+				
+				<f:facet name="footer" >
+				<p:commandButton id="toggler" type="button" value="Kolon Seçimi" style="float:right" icon="ui-icon-calculator" />
+				<p:outputLabel value="Seçim yapmak istediğiniz kolonu seçin !"></p:outputLabel>
+					<p:columnToggler datasource="tblKullanici" trigger="toggler" /> 
+					
+        			       			
+			    </f:facet>
+			</p:dataTable>
+			
+			
+			
+		</h:form>
+        
+        
+</h:body>
+</html>

@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    
+    <title>Konakla - Referanslar</title>
+
+  
+    <link href="../anasayfa/css/bootstrap.css" rel="stylesheet" />
+    
+    <link href="../anasayfa/css/font-awesome.css" rel="stylesheet" />
+       
+    <link href="../anasayfa/css/basic.css" rel="stylesheet" />
+    
+    <link href="../anasayfa/css/custom.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</h:head>
+<h:body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="anaSayfa.xhtml">ANASAYFA</a>
+            </div>
+
+            
+        </nav>
+       
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                               <img src="#{detailBean.kullanici.profilfoto}" />
+
+                            <div class="inner-text">
+                             <h:outputLabel value="#{detailBean.kullanici.adi}"/>
+                              <h:outputLabel  value="#{detailBean.kullanici.soyadi}"  ></h:outputLabel>
+                          
+                               
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                         
+                         <ul class="nav nav-second-level">
+                         
+                         <li>
+                                <a href="profil.xhtml"><i class="fa fa-circle-o "></i>Profil</a>
+                            </li>
+                        
+                            <li>
+                                <a href="ev.xhtml"><i class="fa fa-toggle-on"></i>Ev</a>
+                            </li>
+                            <li>
+                                <a href="fotograflar.xhtml"><i class="fa fa-bell "></i>Fotoğraflar</a>
+                            </li>
+                             <li>
+                                <a href="referanslar.xhtml"><i class="fa fa-circle-o "></i>Referanslar</a>
+                            </li>
+                          
+                           
+                        </ul>
+                    </li>
+                 
+                 
+               
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+         <p:messages autoUpdate="true" />
+           <h3 style="margin-top:0"></h3>
+   
+                 
+                    </div>
+                </div>
+                
+                
+
+   
+ 
+   
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                               
+
+                            </div>
+
+                        </div>
+                       <div class="col-md-4">
+
+                        <div class="panel panel-default" style="width:1000px;height:500px">
+                            <div class="panel-heading" > 
+                           
+                              REFERANSLAR
+                            </div>
+                            <div class="panel-body" style="padding: 0px;">
+                                <div class="chat-widget-main">
+
+
+                                    <div class="chat-widget-left">
+                                       <h:outputLabel value="#{detailBean.kullanici.referans}"/>
+                                    </div>
+                                    <div class="chat-widget-name-left">
+                                        <h4></h4>
+                                    </div>
+                                    <div class="chat-widget-right">
+                                        
+                                    </div>
+                                    <div class="chat-widget-name-right">
+                                        <h4> </h4>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- <div class="panel-footer">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter Message" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button">SEND</button>
+                                    </span>
+                                </div>
+                            </div>  -->
+                           
+                        </div>
+                
+
+                    </div>
+                    <!--/.Chat Panel End-->
+                </div>
+                <!-- /. ROW  -->
+
+
+                <div class="row">
+
+         
+                   
+                </div>
+                <!--/.Row-->
+                <hr />
+                <div class="row">
+
+                  
+                   
+                </div>
+                <!--/.Row-->
+                <hr />
+                <!--  
+                <div class="row" style="padding-bottom: 100px; `">
+                    <div class="col-md-6">
+                        <div id="comments-sec">
+                            <h4><strong>Compose Support Ticket </strong></h4>
+                            <hr />
+
+
+                            <div class="form-group  ">
+                                <label>Please Write a Subject Line</label>
+                                <input type="text" class="form-control" required="required" placeholder="Enter Subject Of Ticket" />
+                            </div>
+                            <div class="form-group ">
+                                <label>Please Enter Issue</label>
+                                <textarea class="form-control" rows="8"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Compose &amp; Send Ticket</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-back noti-box">
+                            <span class="icon-box bg-color-black">
+                                <i class="fa fa-bicycle"></i>
+                            </span>
+                            
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!--/.ROW-->
+                
+                
+               
+    
+                   
+                    </div>
+ 
+                </div>
+                
+                <!--/.Row-->
+                <hr />
+                <div class="row">
+
+                  
+                   
+                </div>
+               
+                <!--/.ROW-->
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+   
+    <!-- 
+    
+    
+     <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="anaSayfa.xhtml">ANASAYFA</a>
+            </div>
+    /. WRAPPER  -->
+
+    <div id="footer-sec">
+      <a href="http://www.binarytheme.com/" target="_blank"></a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../anasayfa/assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery.metisMenu.js"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="../anasayfa/assets/js/custom.js"></script>
+    
+
+
+</h:body>
+</html>

@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    
+    <title>konakla.com</title>
+
+  
+     <link href="../anasayfa/css/bootstrap.css" rel="stylesheet" />
+    
+    <link href="../anasayfa/css/font-awesome.css" rel="stylesheet" />
+       
+    <link href="../anasayfa/css/basic.css" rel="stylesheet" />
+    
+    <link href="css/custom.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</h:head>
+<h:body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="anaSayfa.xhtml">KONAKLA </a>
+            </div>
+
+            <div class="header-right">
+       
+                <a href="message-task.html" class="btn btn-info" title="New Message"><b> </b><i class="fa fa-envelope-o fa-2x"></i></a>
+                
+                <a href="../giris/login.xhtml" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+
+            </div>
+        </nav>
+       
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                          <img src="#{detailBean.kullanici.profilfoto}" style="height:100px; width:100px" /> 
+                           <!--<h:graphicImage value="#{profilBean.kullanici.profilfoto}"></h:graphicImage>
+                             <p:lightBox styleClass="imagebox" id="lighbox1"> 
+                            
+          <h:outputLink value="#{profilBean.kullanici.profilfoto}" title="Foto 1">  
+            <img src="#{profilBean.kullanici.profilfoto}" style="height: 400px; width:100px"  />
+            </h:outputLink>
+        
+           
+         
+            </p:lightBox>   --> 
+                            
+                           
+
+                            <div class="inner-text">
+                                
+                            <br />
+                            <h:outputLabel value="Kullanıcı : "></h:outputLabel>
+                             <h:outputLabel value="#{detailBean.kullanici.adi}"></h:outputLabel>
+                              <h:outputLabel value="#{detailBean.kullanici.soyadi}"></h:outputLabel>
+                             
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                         
+                   
+                        
+                         <ul class="nav nav-second-level">
+                          <li>
+                                <a href="profil.xhtml"><i class="fa fa-circle-o "></i>Profil</a>
+                            </li>
+                         <li>
+                                <a href="ev.xhtml"><i class="fa fa-toggle-on"></i>Ev</a>
+                            </li>
+                            <li>
+                                <a href="fotograflar.xhtml"><i class="fa fa-bell "></i>Fotoğraflar</a>
+                            </li>
+                             <li>
+                                <a href="referanslar.xhtml"><i class="fa fa-circle-o "></i>Referanslar</a>
+                            </li>
+                            
+                          
+                          <li>
+                       <a class="active-menu" href="profilduzenle.xhtml"><i class="fa fa-dashboard "></i>Profil Düzenle</a>
+                    </li>
+                            
+                           
+                        </ul>
+                    </li>
+              
+              
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+         <p:messages autoUpdate="true" />
+           <h3 style="margin-top:0"></h3>
+          <h:form id="frmKullanici">
+			<p:growl autoUpdate="true" life="4000" id="growl" showDetail="true" showSummary="true"></p:growl>
+			
+			<p:dataTable  id="tblKullanici" widgetVar="tblKullanici" var="kullanici" value="#{detailBean.lazy}"
+				selection="#{detailBean.selectedKullanici}" 
+				rows="10" paginator="true" paginatorPosition="bottom" lazy="true" rowKey="#{kullanici.id}" reflow="true"
+				paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="10,20,100">
+				
+				<f:facet name="header">
+				<h4>Kullanıcı Listesi</h4>
+					
+				</f:facet>
+
+				
+				<p:column headerText="Kullanıcı Adı" filterBy="#{kullanici.adi}" sortBy="#{kullanici.adi}">
+					<h:outputText value="#{kullanici.adi}" />
+				</p:column>
+
+				<p:column headerText="Mail" filterBy="#{kullanici.mail}" sortBy="#{kullanici.mail}">
+					<h:outputText value="#{kullanici.mail}" />
+				</p:column>
+
+				<p:column headerText="Şehir seçiniz"  filterBy="#{kullanici.sehir.sehirAdi}" sortBy="#{kullanici.sehir.sehirAdi}" filterable="true">
+					<h:outputText value="#{kullanici.sehir.sehirAdi}" />
+				</p:column>
+				
+				<p:column headerText="İşlemler" width="90">
+					<p:commandButton icon="ui-icon-pencil" update=":frmKullanici:tblKullanici :frmKullanici:growl"  >
+						<p:confirm header="Profil Görüntüleme" message="Profiline git ?"  />
+					</p:commandButton>
+					
+					
+				</p:column>
+
+				
+				
+				<f:facet name="footer" >
+				<p:commandButton id="toggler" type="button" value="Arama Türü" style="float:right" icon="ui-icon-calculator" />
+				<p:outputLabel value="Arama türünü seçin !"></p:outputLabel>
+					<p:columnToggler datasource="tblKullanici" trigger="toggler" /> 
+					
+        			       			
+			    </f:facet>
+			</p:dataTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" onclick="PF('dlgYeniKullanici').show();"  actionListener="#{detailBean.showSelectedKullanici()}" />
+		         <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-cancel"   />
+		    </p:confirmDialog>
+			
+			<p:dialog id="dlgYeniKullanici" modal="true" footer="Kullanıcı Bilgileri"
+			 resizable="false" closable="false" draggable="false" widgetVar="dlgYeniKullanici"
+			 closeOnEscape="true" responsive="true" fitViewport="true" >
+			 		<f:facet name="header">
+				       Kullanıcı
+				    </f:facet>
+				<p:panelGrid columns="2">
+				   
+				    <h:outputText value="Kullanıcı Adı:" />
+				    <p:outputLabel value="Seyda" />
+				 
+				    <h:outputText value="Kullanıcı soyadı:" />
+				    <p:outputLabel value="Akan" />
+				 
+				     <h:outputText value="Kullanıcı mail:" />
+				     <p:outputLabel value="seyda@gmail.com" />
+				 
+				   
+				    
+				   
+				
+					<p:commandButton value="İptal" icon="ui-icon-cancel" onclick="PF('dlgYeniKullanici').hide();"></p:commandButton>
+					<p:commandButton value="Mesaj at" icon="ui-icon-disk" update=":frmKullanici:tblKullanici :frmKullanici:dlgYeniKullanici :frmKullanici:growl"  oncomplete="PF('dlgYeniKullanici').hide();"></p:commandButton>
+				</p:panelGrid>
+			
+			</p:dialog>
+		</h:form>
+        
+        
+        
+        
+        
+        
+                    
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                            </div>
+
+                        </div>
+                        <!-- /. ROW  -->
+                        <hr />
+
+                   
+                    </div>
+  
+                </div>
+                <!-- /. ROW  -->
+
+
+                <div class="row">
+          </div>
+                <!--/.Row-->
+                <hr />
+                <div class="row">
+             
+                </div>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <div id="footer-sec">
+      <a href="http://www.binarytheme.com/" target="_blank"></a>
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../anasayfa/assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery.metisMenu.js"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="../anasayfa/assets/js/custom.js"></script>
+    
+
+
+</h:body>
+</html>

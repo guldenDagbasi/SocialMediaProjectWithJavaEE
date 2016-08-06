@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<h:body>
+<h:form>
+<p:panelGrid columns="2" layout="grid">            
+		  
+		<p:outputLabel value="Misafir Edilebilecek Günler:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.profilHome.gunler}" />
+		   
+        <h:outputLabel value="Maksimum Misafir Sayısı:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.profilHome.misafirSayisi}"/>
+        	
+         <h:outputLabel  value="Misafir Cinsiyet:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.profilHome.cinsiyetTercihi}" />
+        	
+         <h:outputLabel  value="Çocuk İzni:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.profilHome.cocuk}" />
+        
+        <h:outputLabel value="Evcil Hayvan İzni:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.profilHome.evcilHayvanIstegi}" />
+        	
+        <h:outputLabel value="Sigara İzni:" />
+      
+        	<h:outputText value="#{profilHomeBean.profilHome.sigaraAllow}" />
+        	
+         
+        	
+        
+ 
+         
+    	 
+		</p:panelGrid>
+
+
+
+</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,221 @@
+																	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    
+    <title>Konakla</title>
+
+    <link href="../anasayfa/css/bootstrap.css" rel="stylesheet" />
+    
+    <link href="../anasayfa/css/font-awesome.css" rel="stylesheet" />
+       
+    <link href="../anasayfa/css/basic.css" rel="stylesheet" />
+    
+    <link href="../anasayfa/css/custom.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</h:head>
+<h:body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="anaSayfa.xhtml">ANASAYFA</a>
+            </div>
+
+            <div class="header-right">
+        <!--  
+                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
+                <a href="../giris/login.xhtml" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+-->
+            </div>
+        </nav>
+       
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                             <img src="#{detailBean.kullanici.profilfoto}" />
+
+                            <div class="inner-text">
+                                <h:outputLabel value="#{detailBean.kullanici.adi}"/>
+                                 <h:outputLabel value="#{detailBean.kullanici.soyadi}"/>
+                            <br />
+                                
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    
+                    <li>
+                        
+                         <ul class="nav nav-second-level">
+                         
+                            <li>
+                                <a href="profil.xhtml"><i class="fa fa-circle-o "></i>Profil</a>
+                            </li>
+                        
+                            <li>
+                                <a href="ev.xhtml"><i class="fa fa-toggle-on"></i>Ev</a>
+                            </li>
+                            <li>
+                                <a href="fotograflar.xhtml"><i class="fa fa-bell "></i>Fotoğraflar</a>
+                            </li>
+                             <li>
+                                <a href="referanslar.xhtml"><i class="fa fa-circle-o "></i>Referanslar</a>
+                            </li>
+                           
+                          
+                           
+                        </ul>
+                    </li>
+  
+             
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+         <p:messages autoUpdate="true" />
+         
+  
+  
+  
+ <!-- *****EV BİLGİLERİNİN OLDUĞU BÖLÜMM**** -->   
+         
+       <h:form>  
+ 
+        <!-- ************MİSAFİR ÖNCELİKLERİ********** --> 
+        <br></br>
+         <h4>   Misafir Kabul Öncelikleri</h4>
+		<p:panelGrid columns="2" layout="grid">            
+		  
+	
+		  
+		<p:outputLabel value="Misafir Edilebilecek Günler:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.gunler}" />
+		   
+        <h:outputLabel value="Maksimum Misafir Sayısı:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.misafirSayisi}"/>
+        	
+         <h:outputLabel  value="Misafir Cinsiyet:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.cinsiyetTercihi}" />
+        	
+         <h:outputLabel  value="Çocuk İzni:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.cocuk}" />
+        
+        <h:outputLabel value="Evcil Hayvan İzni:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.evcilHayvanIstegi}" />
+        	
+        <h:outputLabel value="Sigara İzni:" />
+      
+        	<h:outputText value="#{profilHomeBean.kullanici.sigaraAllow}" />
+        	
+         
+        	
+        
+ 
+         
+    	 
+		</p:panelGrid>
+	
+		
+		<!-- *********KULLANICI EV BİLGİSİ*********** --> 
+		<br></br>
+		<h4>  Ev Bilgisi</h4>
+		<p:panelGrid columns="2" layout="grid">            
+		   <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+        
+        <h:outputLabel for="basic" value="Evde Evcil Hayvan Bulunma Durumu:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.evcilHayvanBulundurma}" />
+        	
+         <h:outputLabel for="basic" value="Evde Çocuk Bulunma Durumu:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.cocukBulundurma}" />
+        	
+        <h:outputLabel for="basic" value="Evde Sigara İçilme Durumu:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.sigaraIcme}" />
+        
+     
+      
+   		 </h:panelGrid>
+    
+		</p:panelGrid>
+		
+		
+		<!-- ************DAHA FAZLA DETAY************ --> 
+		<br></br>
+		<h4>  Detaylar</h4>
+		<p:panelGrid columns="2" layout="grid">            
+		   <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+        
+        <h:outputLabel for="basic" value="Paylaşılacak Bölüm Detayı:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.paylasilacakBolum}" />
+        	
+        <h:outputLabel for="basic" value="Eklemek İstediklerim:" />
+      
+        	<p:outputLabel  value="#{profilHomeBean.kullanici.eklemekIstedigim}" />
+        	
+        
+
+        
+   		 </h:panelGrid>
+    
+		</p:panelGrid>
+
+	</h:form>
+
+	<!-- *************EV BİLGİLERİNİN OLDUĞU BÖLÜMM BİTİŞ******* -->   
+        
+                    </div>
+                </div>
+                
+          
+                <hr />
+  
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../anasayfa/assets/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../anasayfa/assets/js/jquery.metisMenu.js"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="../anasayfa/assets/js/custom.js"></script>
+
+</h:body>
+</html>
